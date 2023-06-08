@@ -1,11 +1,13 @@
-
+import { Helmet } from "react-helmet-async";
 
 const Instructors = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+  return (
+    <div>
+      <Helmet>
+        <title>Instructors</title>
+      </Helmet>
+    </div>
+  );
 };
 
 export default Instructors;

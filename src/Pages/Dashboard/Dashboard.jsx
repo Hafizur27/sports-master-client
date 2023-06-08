@@ -1,11 +1,13 @@
-
+import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+  return (
+    <div>
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
+    </div>
+  );
 };
 
 export default Dashboard;
