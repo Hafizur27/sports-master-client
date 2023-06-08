@@ -1,6 +1,19 @@
 import { Helmet } from "react-helmet-async";
+import UseAuth from "../../components/UseAuth/UseAuth";
+import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const LogIn = () => {
+
+  const {signIn} = UseAuth();
+
+  const { register, handleSubmit, formState: { errors } } = useForm();
+
+  const onSubmit = data => {
+    console.log(data);
+  };
+ 
+
   return (
     <div>
       <Helmet>
@@ -17,13 +30,14 @@ const LogIn = () => {
             </p>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form className="card-body">
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <input
                   type="text"
+                  {...register("example")}
                   placeholder="email"
                   className="input input-bordered"
                 />
@@ -47,6 +61,7 @@ const LogIn = () => {
                 <input className="btn btn-primary" type="submit" value="LogIn" />
               </div>
             </form>
+            <p><small>New Here? <Link to='/signUp'>Create an Account</Link></small></p>
           </div>
         </div>
       </div>
