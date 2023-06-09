@@ -9,6 +9,7 @@ import SignUp from "../Pages/SignUp/SignUp";
 import LogIn from "../Pages/LogIn/LogIn";
 import AddClass from "../Pages/Dashboard/AddClass/AddClass";
 import Dashboard from "../Layouts/Dashboard";
+import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 
   export const router = createBrowserRouter([
     {
@@ -34,15 +35,22 @@ import Dashboard from "../Layouts/Dashboard";
         {
           path: 'logIn',
           element: <LogIn></LogIn>
-        },
-        {
-          path: 'dashboard',
-          element: <Dashboard></Dashboard>
-        },
+        }
+       
+      ]
+    },
+    {
+      path: 'dashboard',
+      element: <Dashboard></Dashboard>,
+      children: [
         {
           path: 'addClass',
           element: <AddClass></AddClass>
+        },
+        {
+          path: 'manageUser',
+          element: <ManageUsers></ManageUsers>
         }
       ]
-    },
+    }
   ]);
