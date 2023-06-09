@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Lottie from "lottie-react";
 import login from '../../assets/login.json';
+import SocialLogIn from "../../components/SectionTitle/SocialLogIn/SocialLogIn";
 
 const LogIn = () => {
 
@@ -21,7 +22,7 @@ const LogIn = () => {
     .then(result => {
       const loggedUser = result.user;
       console.log(loggedUser)
-      navigate(from, {replace: true})
+      navigate(from, {replace: true});
     })
     .catch(error => console.log(error))
 
@@ -70,6 +71,7 @@ const LogIn = () => {
               </div>
             </form>
             <p><small className="text-orange-600 ml-6 text-sm">New Here? please <Link to='/signUp' className="font-bold">SignUp</Link></small></p>
+            <SocialLogIn></SocialLogIn>
           </div>
         </div>
       </div>

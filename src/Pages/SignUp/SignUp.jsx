@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import UseAuth from "../../components/UseAuth/UseAuth";
 import Lottie from "lottie-react";
 import login from '../../assets/login.json';
+import SocialLogIn from "../../components/SectionTitle/SocialLogIn/SocialLogIn";
 
 const SignUp = () => {
   const {createUser, updateUserProfile} = UseAuth();
@@ -127,6 +128,7 @@ const SignUp = () => {
                 Already have an account? please <Link to="/logIn" className="font-bold">Login</Link>
               </small>
             </p>
+            <SocialLogIn></SocialLogIn>
           </div>
         </div>
       </div>
