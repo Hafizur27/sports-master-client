@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
-import UseAuth from "../../components/UseAuth/UseAuth";
-import UseAxiosSecure from "../../components/hooks/UseAxiosSecure";
+import UseAuth from "../../../components/UseAuth/UseAuth";
+import UseAxiosSecure from "../../../components/hooks/UseAxiosSecure";
 
 
 const img_hosting_token = import.meta.env.VITE_image_upload_token;

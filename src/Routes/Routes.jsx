@@ -7,8 +7,8 @@ import Instructors from "../Pages/Instructors/Instructors";
 import Classes from "../Pages/Classes/Classes";
 import SignUp from "../Pages/SignUp/SignUp";
 import LogIn from "../Pages/LogIn/LogIn";
-import Dashboard from "../Pages/Dashboard/Dashboard";
-import AddClass from "../Pages/AddClass/AddClass";
+import AddClass from "../Pages/Dashboard/AddClass/AddClass";
+import Dashboard from "../Layouts/Dashboard";
 
   export const router = createBrowserRouter([
     {
@@ -40,7 +40,7 @@ import AddClass from "../Pages/AddClass/AddClass";
           element: <Dashboard></Dashboard>
         },
         {
-          path: 'dashboard/addClass',
+          path: 'addClass',
           element: <AddClass></AddClass>
         }
       ]
