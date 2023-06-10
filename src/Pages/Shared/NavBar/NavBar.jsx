@@ -2,27 +2,46 @@ import { Link } from "react-router-dom";
 import UseAuth from "../../../components/UseAuth/UseAuth";
 
 const NavBar = () => {
-  const {user, logOut} = UseAuth();
-  const handleLogOut = () =>{
+  const { user, logOut } = UseAuth();
+  const handleLogOut = () => {
     logOut()
-    .then(() => {})
-    .catch(error => console.log(error))
-  }
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
   const navOptions = (
     <>
-      <li><Link to='/'>Home</Link></li>
-      
-      <li><Link to='/instructors'>Instructors</Link></li>
-      <li><Link to='/classes'>Classes</Link></li>
-      <li><Link to='/dashboard'>Dashboard</Link></li>
-      {
-      user ? <>
-      <li><a onClick={handleLogOut} className="btn btn-sm">logOut</a></li>
-      <li > <img src={user?.photoURL}  className="btn btn-ghost rounded-full" /></li>
-      </>: <>
-      <li><Link to='/logIn'>LogIn</Link></li>
-      </>
-      }
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+
+      <li>
+        <Link to="/instructors">Instructors</Link>
+      </li>
+      <li>
+        <Link to="/classes">Classes</Link>
+      </li>
+
+      {user ? (
+        <>
+          <li>
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
+          <li>
+            <a onClick={handleLogOut} className="btn btn-sm">
+              logOut
+            </a>
+          </li>
+          <li>
+            <img className="btn btn-ghost rounded-full" src={user?.photoURL} />
+          </li>
+        </>
+      ) : (
+        <>
+          <li>
+            <Link to="/logIn">LogIn</Link>
+          </li>
+        </>
+      )}
     </>
   );
   return (

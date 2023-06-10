@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import UseAuth from "../../../components/UseAuth/UseAuth";
 import UseAxiosSecure from "../../../components/hooks/UseAxiosSecure";
+import Swal from "sweetalert2";
 
 
 const img_hosting_token = import.meta.env.VITE_image_upload_token;
@@ -28,7 +29,13 @@ const AddClass = () => {
                 .then(data => {
                     console.log(data.data)
                     if(data?.data?.insertedId){
-                        alert('class added successfully');
+                      Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Successfully added',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
                     }
                 })
             }
@@ -36,13 +43,13 @@ const AddClass = () => {
     
       };
   return (
-    <div>
-      <h3>class</h3>
-      <form onSubmit={handleSubmit(onSubmit)} className="">
+    <div className="w-full ml-14 mt-4 mb-4">
+      <h3 className="font-bold text-center text-xl mb-4"> Please Add class</h3>
+      <form onSubmit={handleSubmit(onSubmit)} className=" border p-6 shadow-lg rounded-lg bg-slate-200">
        <div className="flex gap-4">
        <div className="form-control w-full ">
           <label className="label">
-            <span className="label-text">Instructor Name</span>
+            <span className="label-text font-bold">Instructor Name</span>
           </label>
           <input
             type="text"
@@ -54,7 +61,7 @@ const AddClass = () => {
         </div>
         <div className="form-control w-full ">
           <label className="label">
-            <span className="label-text">Instructor email</span>
+            <span className="label-text font-bold">Instructor email</span>
           </label>
           <input
             type="email"
@@ -68,13 +75,13 @@ const AddClass = () => {
        <div className="flex gap-4 my-4">
        <div className="form-control w-full ">
           <label className="label">
-            <span className="label-text">Sports Class</span>
+            <span className="label-text font-bold">Sports Class</span>
           </label>
           <select defaultValue='Select one Sports' {...register("category", { required: true })} className="select select-bordered">
             <option disabled>
               Select one Sports
             </option>
-            <option>Football</option>
+            <option>Football</option> 
             <option>Cricket</option>
             <option>volley Ball</option>
             <option>Basket Ball</option>
@@ -84,18 +91,7 @@ const AddClass = () => {
         </div>
         <div className="form-control w-full ">
           <label className="label">
-            <span className="label-text">Sports Image</span>
-          </label>
-          <input
-            type="file"
-            {...register("photoURL", { required: true })}
-            className="file-input file-input-bordered w-full"
-          />
-        </div>
-       </div>
-        <div className="form-control w-full ">
-          <label className="label">
-            <span className="label-text">Available seats</span>
+            <span className="label-text font-bold">Available seats</span>
           </label>
           <input
             type="number"
@@ -104,9 +100,21 @@ const AddClass = () => {
             className="input input-bordered w-full max-w-xs"
           />
         </div>
+       
+       </div>
+       <div className="form-control w-full ">
+          <label className="label">
+            <span className="label-text font-bold">Sports Image</span>
+          </label>
+          <input
+            type="file"
+            {...register("photoURL", { required: true })}
+            className="file-input file-input-bordered w-full "
+          />
+        </div>
         <div className="form-control w-full my-4">
           <label className="label">
-            <span className="label-text">Price</span>
+            <span className="label-text font-bold">Price</span>
           </label>
           <input
             type="number"
@@ -115,7 +123,7 @@ const AddClass = () => {
             className="input input-bordered w-full max-w-xs"
           />
         </div>
-        <input type="submit" value="Add Class" className="btn bg-orange-600 text-white hover:bg-orange-400 mb-4" />
+        <input type="submit" value="Add Now" className="btn bg-orange-600 text-white hover:bg-orange-400 mb-4" />
       </form>
     </div>
   );

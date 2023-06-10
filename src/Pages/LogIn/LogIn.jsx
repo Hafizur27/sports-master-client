@@ -14,13 +14,14 @@ const LogIn = () => {
 
   const from = location.state?.from?.pathname || '/';
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
   const onSubmit = data => {
     // console.log(data);
     logIn(data.email, data.password)
     .then(result => {
       const loggedUser = result.user;
+      reset();
       console.log(loggedUser)
       navigate(from, {replace: true});
     })

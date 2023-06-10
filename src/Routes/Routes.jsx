@@ -10,6 +10,11 @@ import LogIn from "../Pages/LogIn/LogIn";
 import AddClass from "../Pages/Dashboard/AddClass/AddClass";
 import Dashboard from "../Layouts/Dashboard";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
+import MangeClass from "../Pages/Dashboard/ManageClass/MangeClass";
+import MyClass from "../Pages/Dashboard/MyClass/MyClass";
+import SelectClass from "../Pages/Dashboard/SelectClass/SelectClass";
+import EnrollClass from "../Pages/Dashboard/EnrollClass/EnrollClass";
+import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 
   export const router = createBrowserRouter([
     {
@@ -48,9 +53,30 @@ import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
           element: <AddClass></AddClass>
         },
         {
+          path: 'myClass',
+          element: <MyClass></MyClass>
+        },
+        {
           path: 'manageUser',
           element: <ManageUsers></ManageUsers>
+        },
+        {
+          path: 'manageClass',
+          element: <MangeClass></MangeClass>
+        },
+        {
+          path: 'selectClass',
+          element: <SelectClass></SelectClass>
+        },
+        {
+          path: 'enrollClass',
+          element: <EnrollClass></EnrollClass>
+        },
+        {
+          path: 'paymentHistory',
+          element: <PaymentHistory></PaymentHistory>
         }
+        
       ]
     }
   ]);
