@@ -13,7 +13,7 @@ const useInstructor = () => {
             return res.data.admin;
         }
     })
-    return [isInstructor, isInstructorLoading]
+    return [isInstructor, isInstructorLoading];
 };
 
 export default useInstructor;
