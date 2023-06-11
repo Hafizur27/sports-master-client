@@ -38,7 +38,7 @@ const SelectClass = () => {
         <tbody>
           {allClass?.map((singleClass, index) => (
             <tr key={singleClass._id}>
-              <th>{index + 1}</th>
+              <td>{index + 1}</td>
               <td>
                 <img
                   className="avatar mask mask-squircle w-10 h-10"

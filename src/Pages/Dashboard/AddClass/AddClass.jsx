@@ -11,7 +11,7 @@ const AddClass = () => {
     const {user} = UseAuth();
     const [axiosSecure] = UseAxiosSecure();
 
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         const formData = new FormData();
         formData.append('image', data.photoURL[0]);
@@ -24,11 +24,12 @@ const AddClass = () => {
             if(imgResponse?.success){
                 const imgUrl = imgResponse?.data?.display_url;
                 const { category, price, seat} = data;
-                const classItem = {name: user?.displayName, email: user?.email, category, price: parseFloat(price), seat: parseInt(seat), image: imgUrl};
-                axiosSecure.post('/class', classItem)
+                const classItem = {name: user?.displayName, email: user?.email, category, price: parseFloat(price), seat: seat, image: imgUrl, status: 'pending' };
+                axiosSecure.post('/addClass', classItem)
                 .then(data => {
                     console.log(data.data)
                     if(data?.data?.insertedId){
+                      reset();
                       Swal.fire({
                         position: 'top-end',
                         icon: 'success',

@@ -73,9 +73,13 @@ const CheckOut = ({price, allClass}) => {
         price,
         date: new Date(),
         quantity: allClass.length,
-        menuId: allClass.map(data => data._id),
-        selectedClassId: allClass.map(data => data.selectId),
-        classesName: allClass.map(data => data.category)
+        menuId: allClass?.map(data => data?._id),
+        selectedClassId: allClass?.map(data => data?.selectId),
+        classesName: allClass?.map(data => data?.category),
+        coachesName: allClass?.map(data => data?.coaches),
+        coachesEmail: allClass?.map(data => data?.coachesEmail),
+        classesImage: allClass?.map(data => data?.image),
+        seat: allClass?.map(data => data?.seat)
 
       };
       axiosSecure.post('/payments', paymentInfo)

@@ -7,10 +7,9 @@ const Class = ({singleClass}) => {
     const [axiosSecure] = UseAxiosSecure();
     const { image, category, name, seat, price, email, _id } = singleClass;
     const {user} = UseAuth();
-    console.log(user)
     const handleSelectClass = data =>{
         if(user && user.email){
-            const selectedClass = {selectId: _id, category, name: user?.displayName, image, price, seat, email: user?.email };
+            const selectedClass = {selectId: _id, category, name: user?.displayName, image, price, seat, email: user?.email, coaches: name, coachesEmail: email  };
             axiosSecure.post('/selectClass', selectedClass)
             .then(data =>{
                 if(data.data.insertedId){
