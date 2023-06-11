@@ -1,11 +1,62 @@
-
+import { useQuery } from "@tanstack/react-query";
+import UseAxiosSecure from "../../../components/hooks/UseAxiosSecure";
+import { Link } from "react-router-dom";
+import useSelectClass from "../../../components/hooks/useSelectClass";
 
 const SelectClass = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+  const [allClass, refetch] = useSelectClass()
+  /* const [axiosSecure] = UseAxiosSecure();
+  const { data: allClass = [], refetch } = useQuery(
+    ["selectClass"],
+    async () => {
+      const res = await axiosSecure.get("/selectClass");
+      return res.data;
+    }
+  ); */
+  
+
+  return (
+    <div className="overflow-x-auto">
+      <table className="table table-xs">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Image</th>
+            <th>Game</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>price</th>
+            <th>Action</th>
+            <th>Payment</th>
+          </tr>
+        </thead>
+        <tbody>
+          {allClass?.map((singleClass, index) => (
+            <tr key={singleClass._id}>
+              <th>{index + 1}</th>
+              <td>
+                <img
+                  className="avatar mask mask-squircle w-10 h-10"
+                  src={singleClass.image}
+                  alt=""
+                />
+              </td>
+              <td>{singleClass.category}</td>
+              <td>{singleClass.name}</td>
+              <td>{singleClass.email}</td>
+              <td>{singleClass.price}</td>
+              <td>
+                <button className="btn btn-sm">Delete</button>
+              </td>
+              <td>
+                <Link to= 'dashboard/payment'><button className="btn btn-sm">pay</button></Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 };
 
 export default SelectClass;
