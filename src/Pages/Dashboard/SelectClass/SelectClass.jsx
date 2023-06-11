@@ -14,8 +14,13 @@ const SelectClass = () => {
     }
   ); */
   
+  const total = allClass?.reduce((sum, item)=> sum + item?.price, 0);
+  console.log(total)
 
   return (
+    <>
+    <h3>Total spend Amount : {total}</h3>
+    <Link to='/dashboard/payment'><button className="btn btn-sm">pay now</button></Link>
     <div className="overflow-x-auto">
       <table className="table table-xs">
         <thead>
@@ -56,6 +61,7 @@ const SelectClass = () => {
         </tbody>
       </table>
     </div>
+    </>
   );
 };
 
