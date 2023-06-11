@@ -17,7 +17,7 @@ const ManageUsers = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.modifiedCount) {
+        if (data.modifiedCount > 0) {
           refetch();
           Swal.fire({
             position: "top-end",
@@ -37,7 +37,7 @@ const ManageUsers = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.modifiedCount) {
+        if (data.modifiedCount > 0) {
           refetch();
           Swal.fire({
             position: "top-end",
@@ -74,7 +74,7 @@ const ManageUsers = () => {
                 <th>{index + 1}</th>
                 <td>{user?.name}</td>
                 <td>{user?.email}</td>
-                <td></td>
+                <td>{user?.role}</td>
                 <td>
                   {user?.role !== "admin" ? (
                     <button

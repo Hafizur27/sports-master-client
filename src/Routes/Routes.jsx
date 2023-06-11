@@ -65,6 +65,7 @@ import Payment from "../Pages/Dashboard/Payment/Payment";
           path: 'manageClass',
           element: <MangeClass></MangeClass>
         },
+      
         {
           path: 'selectClass',
           element: <SelectClass></SelectClass>
