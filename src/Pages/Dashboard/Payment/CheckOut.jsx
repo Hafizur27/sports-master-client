@@ -43,9 +43,11 @@ const CheckOut = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     if (!stripe || !elements) {
       return;
     }
+
     const card = elements.getElement(CardElement);
     if (card === null) {
       return;
@@ -55,6 +57,7 @@ const CheckOut = () => {
       type: "card",
       card,
     });
+
     if (error) {
       setCardError(error?.message);
     } else {
@@ -73,7 +76,6 @@ const CheckOut = () => {
           },
         },
       });
-      console.log(paymentIntent)
 
     if (confirmError) {
       setCardError(confirmError?.message);
@@ -98,6 +100,7 @@ const CheckOut = () => {
         student,
         seat,
       };
+
       axiosSecure.post("/payments", paymentInfo).then((res) => {
         if (res.data.insertResult.insertedId) {
           Swal.fire({
@@ -111,12 +114,13 @@ const CheckOut = () => {
       });
     }
   };
+
   return (
     <>
       <Helmet>
         <title>Student | Payment</title>
       </Helmet>
-      
+
       <h3 className="text-xl font-bold ml-8">Confirm Payment</h3>
       <div className="divider w-2/3 ml-8"></div>
       <form className="w-2/3 m-8" onSubmit={handleSubmit}>

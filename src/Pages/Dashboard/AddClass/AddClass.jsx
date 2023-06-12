@@ -31,7 +31,7 @@ const AddClass = () => {
                   coachPhoto: user?.photoURL,
                   category,
                   price: parseFloat(price),
-                  seat: parseInt(seat),
+                  seat: seat,
                   image: imgUrl,
                   status: 'pending',
                   student: 0,
@@ -54,9 +54,10 @@ const AddClass = () => {
     
       };
   return (
-    <div className="w-full ml-14 mt-4 mb-4">
+    <div className="w-full mt-4 mb-4">
+      
+      <form onSubmit={handleSubmit(onSubmit)} className=" border p-6 shadow-lg rounded-lg ">
       <h3 className="font-bold text-center text-xl mb-4"> Please Add class</h3>
-      <form onSubmit={handleSubmit(onSubmit)} className=" border p-6 shadow-lg rounded-lg bg-slate-200">
        <div className="flex gap-4">
        <div className="form-control w-full ">
           <label className="label">
@@ -83,7 +84,6 @@ const AddClass = () => {
           />
         </div>
        </div>
-       <div className="flex gap-4 my-4">
        <div className="form-control w-full ">
           <label className="label">
             <span className="label-text font-bold">Sports Class</span>
@@ -102,27 +102,26 @@ const AddClass = () => {
         </div>
         <div className="form-control w-full ">
           <label className="label">
-            <span className="label-text font-bold">Available seats</span>
-          </label>
-          <input
-            type="number"
-            {...register("seat", { required: true })}
-            placeholder="Type here"
-            className="input input-bordered w-full max-w-xs"
-          />
-        </div>
-       
-       </div>
-       <div className="form-control w-full ">
-          <label className="label">
             <span className="label-text font-bold">Sports Image</span>
           </label>
           <input
             type="file"
             {...register("photoURL", { required: true })}
-            className="file-input file-input-bordered w-full "
+            className="file-input file-input-ghost file-input-bordered "
           />
         </div>
+        <div className="form-control w-full ">
+          <label className="label">
+            <span className="label-text font-bold">Available seats</span>
+          </label>
+          <input
+            type="number"
+            {...register("seat", { required: true })}
+            placeholder="Available seats"
+            className="input input-bordered w-full max-w-xs"
+          />
+        </div>
+       
         <div className="form-control w-full my-4">
           <label className="label">
             <span className="label-text font-bold">Price</span>
@@ -130,7 +129,7 @@ const AddClass = () => {
           <input
             type="text"
             {...register("price", { required: true })}
-            placeholder="Type here"
+            placeholder="Price"
             className="input input-bordered w-full max-w-xs"
           />
         </div>

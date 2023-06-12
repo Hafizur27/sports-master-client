@@ -26,8 +26,11 @@ const NavBar = () => {
           <li>
             <Link to="/dashboard">Dashboard</Link>
           </li>
-          <li>
-            <button onClick={handleLogOut} className="btn btn-sm bg-lime-500 hover:bg-lime-400 border-none">
+          <li className="mb-2">
+            <button
+              onClick={handleLogOut}
+              className="btn btn-sm bg-green-500 text-white hover:bg-lime-400 border-2"
+            >
               logOut
             </button>
           </li>
@@ -72,10 +75,14 @@ const NavBar = () => {
               {navOptions}
             </ul>
           </div>
-          <Link to='/' className="btn btn-ghost normal-case text-xl">Sports Master</Link>
+          <Link to="/" className="btn btn-ghost normal-case text-xl">
+            Sports Master
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex lg:items-center">
-          <ul className="menu menu-horizontal px-1 flex items-center">{navOptions}</ul>
+          <ul className="menu menu-horizontal px-1 flex items-center">
+            {navOptions}
+          </ul>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import UseAxiosSecure from "../../../components/hooks/UseAxiosSecure";
+import { GrUpdate } from "react-icons/gr";
 
 
 const MyClass = () => {
@@ -7,15 +8,10 @@ const MyClass = () => {
     const {data : allClass = []} = useQuery(['classes'], async() =>{
         const res = await axiosSecure.get('/allClass');
         return res.data;
-    })
-    const {data: student = []} = useQuery(['totalStudent'], async () =>{
-        const res = await axiosSecure.get('/payments');
-        return res.data;
-    })
-    console.log(student)
+    });
+    console.log(allClass[0])
     return (
         <div>
-            <h3>total number of students: {0 + student?.length}</h3>
         <div className="overflow-x-auto">
           <table className="table table-xs">
             <thead>
@@ -23,9 +19,10 @@ const MyClass = () => {
                 <th>#</th>
                 <th>Image</th>
                 <th>Class</th>
-                <th>Seats</th>
+                <th>Remaining</th>
                 <th>Price</th>
                 <th>Status</th>
+                <th>Total Students</th>
                 <th>Feedback</th>
                 <th>Action</th>
               </tr>
@@ -42,14 +39,15 @@ const MyClass = () => {
                     />
                   </td>
                   <td>{singleClass?.category}</td>
-                  <td>{singleClass?.seat}</td>
-                  <td>{singleClass?.price}</td>
+                  <td className="text-center">{singleClass?.seat} Seat</td>
+                  <td className="text-center">{singleClass?.price}</td>
                   <td>{singleClass?.status}</td>
+                  <td className="text-center">{singleClass?.student}</td>
                   <td>
-                    <button className="btn btn-xs">FeedBack</button>
+                    {singleClass?.feedback}
                   </td>
                   <td>
-                    <button className="btn btn-xs">update</button>
+                    <button className="btn btn-xs bg-orange-500 hover:bg-orange-300"><GrUpdate></GrUpdate></button>
                   </td>
                 </tr>
               ))}
