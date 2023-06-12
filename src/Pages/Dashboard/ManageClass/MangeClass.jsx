@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import UseAxiosSecure from "../../../components/hooks/UseAxiosSecure";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MangeClass = () => {
   const [axiosSecure] = UseAxiosSecure();
@@ -11,7 +12,9 @@ const MangeClass = () => {
   console.log(allClass);
   const handleApproveBtn = (data) => {
     axiosSecure.patch(`/addClass/approve/${data._id}`).then((res) => {
-      console.log(res.data);
+      if (res.data.modifiedCount > 0){
+        refetch();
+      }
     });
   };
 
@@ -93,7 +96,7 @@ const MangeClass = () => {
                   )}
                 </td>
                 <td>
-                  <button className="btn btn-xs">FeedBack</button>
+                  <Link to = '/dashboard/feedback'><button className="btn btn-xs">FeedBack</button></Link>
                 </td>
               </tr>
             ))}

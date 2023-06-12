@@ -39,7 +39,7 @@ const SignUp = () => {
 
             updateUserProfile(data.name, imgUrl)
               .then(() => {
-                const saveUser = {name: data.name, email: data.email, imgUrl}
+                const saveUser = {name: data.name, email: data.email, imgUrl, role: 'student'}
                 
                 fetch('http://localhost:5000/users',{
                   method: 'POST',
@@ -72,7 +72,7 @@ const SignUp = () => {
   return (
     <div>
       <Helmet>
-        <title>Home</title>
+        <title>Sports | SignUp</title>
       </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
@@ -80,11 +80,11 @@ const SignUp = () => {
             <Lottie
               animationData={login}
               loop={true}
-              className="w-2/3 mx-auto"
+              className=""
             />
           </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100  p-4 md:mt-16">
-            <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
+          <div className="">
+            <form className="card-body bg-yellow-100  shadow-2xl p-6 md:mt-16 rounded-2xl border border-black" onSubmit={handleSubmit(onSubmit)}>
               <h4 className="font-bold mb-2">Please SignUp</h4>
               <div className="form-control">
                 <input
@@ -150,7 +150,7 @@ const SignUp = () => {
                   type="file"
                   placeholder="Photo URL"
                   {...register("photoURL", { required: true })}
-                  className="file-input file-input-bordered"
+                  className="file-input "
                 />
                 {errors.photoURL && (
                   <span className="text-red-500">Photo URL is required</span>

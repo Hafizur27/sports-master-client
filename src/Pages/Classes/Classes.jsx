@@ -5,10 +5,11 @@ import Class from "./Class";
 
 const Classes = () => {
   const [axiosSecure] = UseAxiosSecure();
-  const { data: allClass = [] } = useQuery(["users"], async () => {
+  const { data: classes = [] } = useQuery(["classes"], async () => {
     const res = await axiosSecure.get("/allClass");
     return res.data;
   });
+  const allClass = classes?.filter(data => data?.status === 'approve');
   return (
     <div>
       <Helmet>

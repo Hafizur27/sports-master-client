@@ -10,6 +10,7 @@ const AddClass = () => {
     const img_hosting_url= `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
     const {user} = UseAuth();
     const [axiosSecure] = UseAxiosSecure();
+    console.log(user)
 
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
@@ -24,10 +25,19 @@ const AddClass = () => {
             if(imgResponse?.success){
                 const imgUrl = imgResponse?.data?.display_url;
                 const { category, price, seat} = data;
-                const classItem = {name: user?.displayName, email: user?.email, category, price: parseFloat(price), seat: seat, image: imgUrl, status: 'pending' };
+                const classItem = {
+                  coachName: user?.displayName,
+                  coachEmail: user?.email,
+                  coachPhoto: user?.photoURL,
+                  category,
+                  price: parseFloat(price),
+                  seat: parseInt(seat),
+                  image: imgUrl,
+                  status: 'pending',
+                  student: 0,
+                  feedback: 'no feedback' };
                 axiosSecure.post('/addClass', classItem)
                 .then(data => {
-                    console.log(data.data)
                     if(data?.data?.insertedId){
                       reset();
                       Swal.fire({
@@ -118,7 +128,7 @@ const AddClass = () => {
             <span className="label-text font-bold">Price</span>
           </label>
           <input
-            type="number"
+            type="text"
             {...register("price", { required: true })}
             placeholder="Type here"
             className="input input-bordered w-full max-w-xs"

@@ -27,9 +27,9 @@ const NavBar = () => {
             <Link to="/dashboard">Dashboard</Link>
           </li>
           <li>
-            <a onClick={handleLogOut} className="btn btn-sm">
+            <button onClick={handleLogOut} className="btn btn-sm bg-lime-500 hover:bg-lime-400 border-none">
               logOut
-            </a>
+            </button>
           </li>
           <li>
             <img className="btn btn-ghost rounded-full" src={user?.photoURL} />
@@ -48,8 +48,8 @@ const NavBar = () => {
     <div>
       <div className="navbar bg-yellow-600 text-white ">
         <div className="navbar-start">
-          <div className="dropdown">
-            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+          <div className="dropdown ">
+            <label tabIndex={0} className="btn btn-ghost lg:hidden ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -67,15 +67,15 @@ const NavBar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow  bg-yellow-400 z-50 text-neutral-content rounded-box w-52"
             >
               {navOptions}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">Sports Master</a>
+          <Link to='/' className="btn btn-ghost normal-case text-xl">Sports Master</Link>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navOptions}</ul>
+        <div className="navbar-center hidden lg:flex lg:items-center">
+          <ul className="menu menu-horizontal px-1 flex items-center">{navOptions}</ul>
         </div>
       </div>
     </div>

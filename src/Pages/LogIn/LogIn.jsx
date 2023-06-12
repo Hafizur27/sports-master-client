@@ -17,12 +17,11 @@ const LogIn = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
   const onSubmit = data => {
-    // console.log(data);
     logIn(data.email, data.password)
     .then(result => {
       const loggedUser = result.user;
-      reset();
       console.log(loggedUser)
+      reset();
       navigate(from, {replace: true});
     })
     .catch(error => console.log(error))
@@ -33,15 +32,15 @@ const LogIn = () => {
   return (
     <div>
       <Helmet>
-        <title>LogIn</title>
+        <title>sports | LogIn</title>
       </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
-          <Lottie animationData={login} loop={true} className="w-2/3 mx-auto" />
+          <div className="text-center lg:text-left ">
+          <Lottie animationData={login} loop={true} className="" />
           </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl p-4 md:mt-16">
-            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+          <div className="">
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body bg-yellow-100  shadow-2xl p-6 md:mt-16 rounded-2xl border border-black">
               <h4 className="font-bold mb-2">Please LogIn</h4>
               <div className="form-control">
                 <label className="label">
@@ -50,8 +49,8 @@ const LogIn = () => {
                 <input
                   type="text"
                   {...register("email", { required: true })}
-                  placeholder="email"
-                  className="input input-bordered"
+                  placeholder="Enter your email"
+                  className="input input-bordered "
                 />
                 {errors.email && <span className="text-red-500">Email is required</span>}
               </div>
@@ -62,7 +61,7 @@ const LogIn = () => {
                 <input
                   type="password"
                   {...register("password", { required: true })}
-                  placeholder="password"
+                  placeholder="Enter your password"
                   className="input input-bordered"
                 />
                 {errors.password && <span className="text-red-500">Password is required</span>}

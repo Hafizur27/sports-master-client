@@ -16,6 +16,7 @@ import SelectClass from "../Pages/Dashboard/SelectClass/SelectClass";
 import EnrollClass from "../Pages/Dashboard/EnrollClass/EnrollClass";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import FeedBack from "../Pages/Dashboard/ManageUsers/FeedBack/FeedBack";
 
   export const router = createBrowserRouter([
     {
@@ -65,7 +66,10 @@ import Payment from "../Pages/Dashboard/Payment/Payment";
           path: 'manageClass',
           element: <MangeClass></MangeClass>
         },
-      
+        {
+          path: 'feedback',
+          element: <FeedBack></FeedBack>
+        },
         {
           path: 'selectClass',
           element: <SelectClass></SelectClass>
