@@ -7,6 +7,8 @@ import { BsCartCheck } from "react-icons/bs";
 import { RiSecurePaymentLine } from "react-icons/ri";
 import { FaHome, FaUser } from "react-icons/fa";
 import { SiGoogleclassroom } from "react-icons/si";
+import { MdManageAccounts } from "react-icons/md";
+import { AiFillControl } from "react-icons/ai";
 
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
@@ -30,10 +32,10 @@ const Dashboard = () => {
           {isAdmin ? (
             <>
               <li>
-                <NavLink to="/dashboard/manageClass">Manage Classes</NavLink>
+                <NavLink to="/dashboard/manageClass"><AiFillControl></AiFillControl> Manage Classes</NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/manageUser">Manage Users</NavLink>
+                <NavLink to="/dashboard/manageUser"><MdManageAccounts></MdManageAccounts> Manage Users</NavLink>
               </li>
             </>
           ) : isInstructor ? (

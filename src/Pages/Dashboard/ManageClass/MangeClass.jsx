@@ -2,18 +2,24 @@ import { useQuery } from "@tanstack/react-query";
 import UseAxiosSecure from "../../../components/hooks/UseAxiosSecure";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-
+import { BiMessageEdit } from "react-icons/bi";
 const MangeClass = () => {
   const [axiosSecure] = UseAxiosSecure();
   const { data: allClass = [], refetch } = useQuery(["allClass"], async () => {
     const res = await axiosSecure.get("/allClass");
     return res.data;
   });
-  console.log(allClass);
   const handleApproveBtn = (data) => {
     axiosSecure.patch(`/addClass/approve/${data._id}`).then((res) => {
-      if (res.data.modifiedCount > 0){
+      if (res.data.modifiedCount > 0) {
         refetch();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Approved Class",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     });
   };
@@ -25,14 +31,15 @@ const MangeClass = () => {
         Swal.fire({
           position: "top-end",
           icon: "success",
-          title: "Status deny",
+          title: "Denied Class",
           showConfirmButton: false,
           timer: 1500,
         });
       }
-      console.log(res.data);
     });
   };
+
+ 
   return (
     <div>
       <div className="overflow-x-auto">
@@ -45,9 +52,9 @@ const MangeClass = () => {
               <th>Instructor</th>
               <th>Email</th>
               <th>Seats</th>
-              <th>Price</th>
+              <th>Price $</th>
               <th>Status</th>
-              <th>Action</th>
+              <th className="text-center">Action</th>
               <th>Feedback</th>
             </tr>
           </thead>
@@ -63,40 +70,52 @@ const MangeClass = () => {
                   />
                 </td>
                 <td>{singleClass?.category}</td>
-                <td>{singleClass?.name}</td>
-                <td>{singleClass?.email}</td>
-                <td>{singleClass?.seat}</td>
-                <td>{singleClass?.price}</td>
+                <td>{singleClass?.coachName}</td>
+                <td>{singleClass?.coachEmail}</td>
+                <td className="text-center">{singleClass?.seat}</td>
+                <td className="text-center">{singleClass?.price}</td>
                 <td>{singleClass?.status}</td>
-                <td>
-                  {singleClass?.status !== 'approve' || singleClass?.status !== 'deny' ? (
-                    <>
+
+                {singleClass?.status !== "approve" &&
+                singleClass?.status !== "deny" ? (
+                  <>
+                    <td className="flex gap-1">
                       <button
                         onClick={() => handleApproveBtn(singleClass)}
-                        className="btn btn-xs"
+                        className="btn btn-xs font-thin bg-green-500 hover:bg-green-700 text-white text-xs"
                       >
                         Approve
                       </button>
                       <button
                         onClick={() => handleDenyBtn(singleClass)}
-                        className="btn btn-xs"
+                        className="btn btn-xs font-thin bg-red-500 hover:bg-red-700 text-white text-xs"
                       >
+                        {" "}
                         Deny
                       </button>
-                    </>
-                  ) : (
-                    <>
-                      <button disabled className="btn btn-xs">
+                    </td>
+                  </>
+                ) : (
+                  <>
+                    <td className="flex gap-1">
+                      <button className="btn btn-xs " disabled>
                         Approve
                       </button>
-                      <button disabled className="btn btn-xs">
+                      <button className="btn btn-xs " disabled>
+                        {" "}
                         Deny
                       </button>
-                    </>
-                  )}
-                </td>
+                    </td>
+                  </>
+                )}
+
                 <td>
-                  <Link to = '/dashboard/feedback'><button className="btn btn-xs">FeedBack</button></Link>
+                  
+                    <Link to ='/dashboard/feedback' state={singleClass}><button className="btn btn-xs font-thin bg-yellow-500 hover:bg-yellow-700 text-white text-lg py-1 ml-3 ">
+                      <BiMessageEdit></BiMessageEdit>
+                    </button></Link>
+                  
+                  
                 </td>
               </tr>
             ))}

@@ -35,7 +35,7 @@ const NavBar = () => {
             </button>
           </li>
           <li>
-            <img className="btn btn-ghost rounded-full" src={user?.photoURL} />
+            <img className="w-16 h-11 rounded-full " src={user?.photoURL} />
           </li>
         </>
       ) : (

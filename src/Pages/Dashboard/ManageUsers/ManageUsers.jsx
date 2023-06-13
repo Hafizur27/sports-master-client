@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import UseAxiosSecure from "../../../components/hooks/UseAxiosSecure";
+import { GiTeacher } from "react-icons/gi";
+import { MdOutlineAdminPanelSettings } from "react-icons/md";
 
 const ManageUsers = () => {
   const [axiosSecure] = UseAxiosSecure();
@@ -55,7 +57,8 @@ const ManageUsers = () => {
       <Helmet>
         <title>Manage User</title>
       </Helmet>
-      <h3>total User: {users?.length}</h3>
+      <h2 className="text-2xl font-bold m-3">Manage All Users</h2>
+      <div className="divider"></div>
       <div className="overflow-x-auto">
         <table className="table">
           <thead>
@@ -64,8 +67,8 @@ const ManageUsers = () => {
               <th>Name</th>
               <th>Email</th>
               <th>Role</th>
-              <th>Action</th>
-              <th>Action</th>
+              <th className="text-center ">Make Admin</th>
+              <th className="text-center">Make Instructor</th>
             </tr>
           </thead>
           <tbody>
@@ -79,13 +82,13 @@ const ManageUsers = () => {
                   {user?.role !== "admin" ? (
                     <button
                       onClick={() => handleMakeAdmin(user)}
-                      className="btn btn-sm"
+                      className="btn btn-sm bg-orange-500 text-white text-lg hover:bg-orange-700 ml-2"
                     >
-                      Make Admin
+                      <MdOutlineAdminPanelSettings></MdOutlineAdminPanelSettings>
                     </button>
                   ) : (
-                    <button className="btn btn-sm" disabled>
-                      Make Admin
+                    <button className="btn text-lg btn-sm ml-2" disabled>
+                    <MdOutlineAdminPanelSettings></MdOutlineAdminPanelSettings>
                     </button>
                   )}
                 </td>
@@ -93,13 +96,13 @@ const ManageUsers = () => {
                 {user?.role !== "instructor" ? 
                     <button
                       onClick={() => handleMakeInstructor(user)}
-                      className="btn btn-sm"
+                      className="btn btn-sm bg-green-500 text-white text-sm hover:bg-green-700 ml-5"
                     >
-                      Make Instructor
+                      <GiTeacher></GiTeacher>
                     </button>
                    : 
-                    <button className="btn btn-sm" disabled>
-                      Make Instructor
+                    <button className="btn text-sm btn-sm ml-5" disabled>
+                     <GiTeacher></GiTeacher>
                     </button>
                   }
                   

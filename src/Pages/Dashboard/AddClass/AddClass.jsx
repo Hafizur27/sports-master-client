@@ -10,7 +10,6 @@ const AddClass = () => {
     const img_hosting_url= `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
     const {user} = UseAuth();
     const [axiosSecure] = UseAxiosSecure();
-    console.log(user)
 
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
@@ -57,7 +56,8 @@ const AddClass = () => {
     <div className="w-full mt-4 mb-4">
       
       <form onSubmit={handleSubmit(onSubmit)} className=" border p-6 shadow-lg rounded-lg ">
-      <h3 className="font-bold text-center text-xl mb-4"> Please Add class</h3>
+      <h3 className="font-bold text-xl"> Please Add class</h3>
+      <div className="divider"></div>
        <div className="flex gap-4">
        <div className="form-control w-full ">
           <label className="label">
