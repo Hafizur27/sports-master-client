@@ -23,7 +23,7 @@ const PopularInstructor = () => {
               <img
                 src={data?.coachPhoto}
                 alt="Popular class"
-                className="rounded-xl"
+                className="w-full h-56 object-cover rounded-lg"
               />
             </figure>
           </div>

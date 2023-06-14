@@ -58,9 +58,10 @@ const Class = ({singleClass}) => {
        <Toaster position="top-right" />
         <div className={reamingSeat === 0 ? 'card bg-red-600 shadow-xl' : 'card bg-base-100 shadow-xl'}>
         <figure className="px-10 pt-10">
-          <img src={image} alt="class" className="rounded-xl" />
+          <img src={image} alt="class" className="rw-full h-56 object-cover rounded-lg" />
         </figure>
-        <div className="card-body items-center text-center">
+        <div
+           className="card-body items-center text-center">
           <h2 className="card-title">Name: {category}</h2>
           <p>Instructor: {coachName}</p>
           <p>Available seats: {seat}</p>

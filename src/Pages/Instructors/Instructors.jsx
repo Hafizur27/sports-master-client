@@ -4,6 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import Instructor from "./Instructor";
 
 const Instructors = () => {
+
+  
   const [axiosSecure] = UseAxiosSecure();
   const { data: users = [] } = useQuery(["users"], async () => {
     const res = await axiosSecure.get("/users");

@@ -4,6 +4,7 @@ import PopularClass from "../PopularClass/PopularClass";
 import PopularInstructor from "./PopularInstructor/PopularInstructor";
 import { useState } from "react";
 import { useEffect } from "react";
+import BlogSection from "./BlogSection/BlogSection";
 
 const Home = () => {
   const [theme, setTheme] = useState(
@@ -27,7 +28,7 @@ const Home = () => {
       <Helmet>
         <title>Home</title>
       </Helmet>
-      <label className="swap swap-rotate">
+      <label className="swap swap-rotate flex items-center justify-center mb-4">
         <input
           onChange={handelToggle}
           checked={theme === "light" ? false : true}
@@ -52,6 +53,7 @@ const Home = () => {
       <Banner></Banner>
       <PopularClass></PopularClass>
       <PopularInstructor></PopularInstructor>
+      <BlogSection></BlogSection>
     </div>
   );
 };

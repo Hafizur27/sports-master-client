@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 import useAdmin from "../components/hooks/useAdmin";
 import useInstructor from "../components/hooks/useInstructor";
 import { BiSelectMultiple } from "react-icons/bi";
@@ -13,14 +13,20 @@ import UseAuth from "../components/UseAuth/UseAuth";
 import Footer from "../Pages/Shared/Footer/Footer";
 import NavBar from "../Pages/Shared/NavBar/NavBar";
 import { Helmet } from "react-helmet-async";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const Dashboard = () => {
+  const location = useLocation();
+  const route = location.pathname
+  
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
   const {user} = UseAuth();
 
   return (
-    <div>
+   <div>
+    {
+      route? <div>
       <Helmet>
         <title>My | Dashboard</title>
       </Helmet>
@@ -109,7 +115,10 @@ const Dashboard = () => {
     <div className="mt-">
     <Footer></Footer>
     </div>
-    </div>
+    </div> : <ErrorPage></ErrorPage>
+    }
+     
+   </div>
   );
 };
 
