@@ -44,7 +44,7 @@ const AuthProvider = ({children}) => {
             setUser(currentUser);
             console.log(currentUser);
             if(currentUser){
-                axios.post('http://localhost:5000/jwt',{email: currentUser?.email})
+                axios.post('https://sports-master-server-hafizur27.vercel.app/jwt',{email: currentUser?.email})
                 .then(res => {
                     localStorage.setItem('access-token', res.data.token);
                     setLoading(false);

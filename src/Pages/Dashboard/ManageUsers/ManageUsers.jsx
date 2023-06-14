@@ -13,7 +13,7 @@ const ManageUsers = () => {
   });
 
   const handleMakeAdmin = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+    fetch(`https://sports-master-server-hafizur27.vercel.app/users/admin/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -33,7 +33,7 @@ const ManageUsers = () => {
   };
 
   const handleMakeInstructor = (user) => {
-    fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+    fetch(`https://sports-master-server-hafizur27.vercel.app/users/instructor/${user._id}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
@@ -53,15 +53,15 @@ const ManageUsers = () => {
   };
 
   return (
-    <div>
+    <div className="">
       <Helmet>
         <title>Manage User</title>
       </Helmet>
       <h2 className="text-2xl font-bold m-3">Manage All Users</h2>
       <div className="divider"></div>
       <div className="overflow-x-auto">
-        <table className="table">
-          <thead>
+        <table className="table ">
+          <thead className="bg-black text-white">
             <tr>
               <th>#</th>
               <th>Name</th>

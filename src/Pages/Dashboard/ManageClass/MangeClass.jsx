@@ -6,7 +6,7 @@ import { BiMessageEdit } from "react-icons/bi";
 const MangeClass = () => {
   const [axiosSecure] = UseAxiosSecure();
   const { data: allClass = [], refetch } = useQuery(["allClass"], async () => {
-    const res = await axiosSecure.get("/allClass");
+    const res = await axiosSecure.get("/manageClass");
     return res.data;
   });
   const handleApproveBtn = (data) => {
@@ -44,7 +44,7 @@ const MangeClass = () => {
     <div>
       <div className="overflow-x-auto">
         <table className="table table-xs">
-          <thead>
+          <thead className="bg-black text-white">
             <tr>
               <th>#</th>
               <th>Image</th>
@@ -54,7 +54,8 @@ const MangeClass = () => {
               <th>Seats</th>
               <th>Price $</th>
               <th>Status</th>
-              <th className="text-center">Action</th>
+              <th >Approve</th>
+              <th >Deny</th>
               <th>Feedback</th>
             </tr>
           </thead>
@@ -79,14 +80,17 @@ const MangeClass = () => {
                 {singleClass?.status !== "approve" &&
                 singleClass?.status !== "deny" ? (
                   <>
-                    <td className="flex gap-1">
+                    <td className="">
                       <button
                         onClick={() => handleApproveBtn(singleClass)}
                         className="btn btn-xs font-thin bg-green-500 hover:bg-green-700 text-white text-xs"
                       >
                         Approve
                       </button>
-                      <button
+                     
+                    </td>
+                    <td>
+                    <button
                         onClick={() => handleDenyBtn(singleClass)}
                         className="btn btn-xs font-thin bg-red-500 hover:bg-red-700 text-white text-xs"
                       >
@@ -101,11 +105,12 @@ const MangeClass = () => {
                       <button className="btn btn-xs " disabled>
                         Approve
                       </button>
-                      <button className="btn btn-xs " disabled>
+                      
+                    </td>
+                    <td><button className="btn btn-xs " disabled>
                         {" "}
                         Deny
-                      </button>
-                    </td>
+                      </button></td>
                   </>
                 )}
 

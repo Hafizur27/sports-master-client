@@ -8,7 +8,6 @@ import { MdPayment } from "react-icons/md";
 import { BiDollar } from "react-icons/bi";
 
 const SelectClass = () => {
-  
   const [allClass, refetch] = useSelectClass();
   const [axiosSecure] = UseAxiosSecure();
 
@@ -37,7 +36,7 @@ const SelectClass = () => {
       <div className="w-full">
         <div className="overflow-x-auto ml-8">
           <table className="table table-xs">
-            <thead>
+            <thead className="bg-black text-white">
               <tr>
                 <th>#</th>
                 <th>Image</th>

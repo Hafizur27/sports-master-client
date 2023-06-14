@@ -14,12 +14,12 @@ const PaymentHistory = () => {
       <Helmet>
         <title>Payment | History </title>
       </Helmet>
-      <h3 className="text-xl font-bold w-full ml-16"><span className="text-lime-500">Payment</span> History</h3>
+      <h3 className="text-xl font-bold w-full ml-16"><span className="text-yellow-500">Payment</span> History</h3>
       <div className="divider w-11/12 ml-8"></div>
       <div className="w-full">
         <div className="overflow-x-auto m-8">
           <table className="table table-xs">
-            <thead>
+            <thead className="bg-black text-white">
               <tr>
                 <th>#</th>
                 <th>Name</th>

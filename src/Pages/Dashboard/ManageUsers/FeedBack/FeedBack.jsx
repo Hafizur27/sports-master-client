@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useLocation } from "react-router-dom";
+import { useLocation} from "react-router-dom";
 import UseAxiosSecure from "../../../../components/hooks/UseAxiosSecure";
 import Swal from "sweetalert2";
 
@@ -54,19 +54,3 @@ const FeedBack = () => {
 };
 
 export default FeedBack;
-
-
-/* fetch(`http://localhost:5000/feedback/${singleData?._id}`, {
-  method: 'PUT',
-  headers: {
-      'content-type': 'application/json'
-  },
-  body: JSON.stringify(data)
-})
-  .then(res => res.json())
-  .then(data => {
-      console.log(data.modifiedCount)
-      if (data.modifiedCount > 0) {
-          alert('update data')
-      }
-  }) */

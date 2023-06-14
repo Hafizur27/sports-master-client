@@ -2,11 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import UseAxiosSecure from "../../../components/hooks/UseAxiosSecure";
 import { GrUpdate } from "react-icons/gr";
 import { Helmet } from "react-helmet-async";
+import UseAuth from "../../../components/UseAuth/UseAuth";
 
 const MyClass = () => {
   const [axiosSecure] = UseAxiosSecure();
+  const {user} = UseAuth();
   const { data: allClass = [] } = useQuery(["classes"], async () => {
-    const res = await axiosSecure.get("/allClass");
+    const res = await axiosSecure.get(`/allClass/${user?.email}`);
     return res.data;
   });
   return (
@@ -18,7 +20,7 @@ const MyClass = () => {
         <h3 className="text-xl font-bold ">My Class Information</h3>
         <div className="divider"></div>
         <table className="table table-xs">
-          <thead>
+          <thead className="bg-black text-white">
             <tr>
               <th>#</th>
               <th>Image</th>
@@ -28,7 +30,7 @@ const MyClass = () => {
               <th>Status</th>
               <th>Total Students</th>
               <th>Feedback</th>
-              <th>Action</th>
+              <th>Update</th>
             </tr>
           </thead>
           <tbody>
@@ -49,7 +51,7 @@ const MyClass = () => {
                 <td className="text-center">{singleClass?.student}</td>
                 <td>{singleClass?.feedback}</td>
                 <td>
-                  <button className="btn btn-xs bg-orange-500 hover:bg-orange-300">
+                  <button className="btn btn-xs bg-orange-500 hover:bg-orange-600 ml-2">
                     <GrUpdate></GrUpdate>
                   </button>
                 </td>

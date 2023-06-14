@@ -4,7 +4,7 @@ import UseAxiosSecure from "../../../components/hooks/UseAxiosSecure";
 import UseAuth from "../../../components/UseAuth/UseAuth";
 import Swal from "sweetalert2";
 import "./CheckOut.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 const CheckOut = () => {
@@ -17,6 +17,7 @@ const CheckOut = () => {
   const [processing, setProcessing] = useState(false);
   const location = useLocation();
   const data = location.state;
+  const navigate = useNavigate();
   const {
     coachName,
     coachEmail,
@@ -103,6 +104,7 @@ const CheckOut = () => {
 
       axiosSecure.post("/payments", paymentInfo).then((res) => {
         if (res.data.insertResult.insertedId) {
+          navigate('/dashboard/enrollClass')
           Swal.fire({
             position: "top-end",
             icon: "success",

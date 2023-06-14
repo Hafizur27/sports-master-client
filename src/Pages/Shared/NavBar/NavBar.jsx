@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UseAuth from "../../../components/UseAuth/UseAuth";
 
 const NavBar = () => {
   const { user, logOut } = UseAuth();
+  const navigate = useNavigate();
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+        navigate('/logIn')
+      })
       .catch((error) => console.log(error));
   };
   const navOptions = (
@@ -35,7 +38,7 @@ const NavBar = () => {
             </button>
           </li>
           <li>
-            <img className="w-16 h-11 rounded-full " src={user?.photoURL} />
+            <img className="w-16 h-12 rounded-full " src={user?.photoURL} />
           </li>
         </>
       ) : (

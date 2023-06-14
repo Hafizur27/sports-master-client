@@ -17,11 +17,16 @@ import EnrollClass from "../Pages/Dashboard/EnrollClass/EnrollClass";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import FeedBack from "../Pages/Dashboard/ManageUsers/FeedBack/FeedBack";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
+import InstructorRoute from "./InstructorRoute";
+import AdminRoute from "./AdminRoute";
 
   export const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
           path: '/',
@@ -48,43 +53,43 @@ import FeedBack from "../Pages/Dashboard/ManageUsers/FeedBack/FeedBack";
     },
     {
       path: 'dashboard',
-      element: <Dashboard></Dashboard>,
+      element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
         {
           path: 'addClass',
-          element: <AddClass></AddClass>
+          element: <InstructorRoute><AddClass></AddClass></InstructorRoute>
         },
         {
           path: 'myClass',
-          element: <MyClass></MyClass>
+          element: <InstructorRoute><MyClass></MyClass></InstructorRoute>
         },
         {
           path: 'manageUser',
-          element: <ManageUsers></ManageUsers>
+          element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
         },
         {
           path: 'manageClass',
-          element: <MangeClass></MangeClass>
+          element: <AdminRoute><MangeClass></MangeClass></AdminRoute>
         },
         {
           path: 'feedback',
-          element: <FeedBack></FeedBack>
+          element: <AdminRoute><FeedBack></FeedBack></AdminRoute>
         },
         {
           path: 'selectClass',
-          element: <SelectClass></SelectClass>
+          element: <PrivateRoute><SelectClass></SelectClass></PrivateRoute>
         },
         {
           path: 'payment',
-          element: <Payment></Payment>
+          element: <PrivateRoute><Payment></Payment></PrivateRoute>
         },
         {
           path: 'enrollClass',
-          element: <EnrollClass></EnrollClass>
+          element: <PrivateRoute><EnrollClass></EnrollClass></PrivateRoute>
         },
         {
           path: 'paymentHistory',
-          element: <PaymentHistory></PaymentHistory>
+          element: <PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
         }
         
       ]

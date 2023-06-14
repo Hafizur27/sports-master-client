@@ -23,7 +23,7 @@ const EnrollClass = () => {
       <div className="w-full">
         <div className="overflow-x-auto w-2/3 m-8">
           <table className="table table-xs">
-            <thead>
+            <thead className="bg-black text-white">
               <tr>
                 <th>#</th>
                 <th>Image</th>

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://sports-master-server-hafizur27.vercel.app'
 });
 
 const UseAxiosSecure = () => {
@@ -21,8 +21,8 @@ const UseAxiosSecure = () => {
         });
         axiosSecure.interceptors.response.use(response => response, async (error) =>{
             if(error.response && (error?.response.status === 401 || error?.response.status === 403)){
-                /* await logOut();
-                navigate('/logIn'); */
+                await logOut();
+                navigate('/logIn');
             }
             return Promise.reject(error);
         });

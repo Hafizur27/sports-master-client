@@ -10,7 +10,7 @@ const InstructorRoute = ({children}) => {
     if(loading || isInstructorLoading){
         return <progress className="progress w-56"></progress>
     }
-    if(!user && isInstructor){
+    if(user && isInstructor){
         return children;
     }
     return <Navigate to= '/logIn' state={{from: location}} replace></Navigate>

@@ -16,7 +16,7 @@ const SocialLogIn = () => {
             const loggedInUser = result.user;
             const saveUser = {name: loggedInUser?.displayName, email: loggedInUser?.email, imgUrl: loggedInUser?.photoURL
             }
-            fetch('http://localhost:5000/users', {
+            fetch('https://sports-master-server-hafizur27.vercel.app/users', {
               method: 'POST',
               headers:{
                 'content-type': 'application/json'
