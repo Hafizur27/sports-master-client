@@ -4,7 +4,6 @@ import blog3 from "../../../../assets/Blogs/blog-3.jpg";
 import blog4 from "../../../../assets/Blogs/blog-4.jpg";
 import blog5 from "../../../../assets/Blogs/blog-5.jpg";
 import blog6 from "../../../../assets/Blogs/blog-6.jpg";
-import { motion } from "framer-motion";
 const BlogSection = () => {
   return (
     <div>
@@ -36,15 +35,7 @@ const BlogSection = () => {
               </div>
             </div>
 
-            <motion.div
-              whileHover={{ scale: 1.2, rotate: 90 }}
-              whileTap={{
-                scale: 0.8,
-                rotate: -90,
-                borderRadius: "100%",
-              }}
-              className="bg-white shadow-lg rounded-lg overflow-hidden"
-            >
+            <div className="bg-white shadow-lg rounded-lg overflow-hidden">
               <img
                 src={blog2}
                 alt="Cricket Blog Post"
@@ -63,7 +54,7 @@ const BlogSection = () => {
                   Read More
                 </button>
               </div>
-            </motion.div>
+            </div>
 
             <div className="bg-white shadow-lg rounded-lg overflow-hidden">
               <img
@@ -107,15 +98,7 @@ const BlogSection = () => {
               </div>
             </div>
 
-            <motion.div
-              whileHover={{ scale: 1.2, rotate: 90 }}
-              whileTap={{
-                scale: 0.8,
-                rotate: -90,
-                borderRadius: "100%",
-              }}
-              className="bg-white shadow-lg rounded-lg overflow-hidden"
-            >
+            <div className="bg-white shadow-lg rounded-lg overflow-hidden">
               <img
                 src={blog5}
                 alt="Badminton Blog Post"
@@ -134,7 +117,7 @@ const BlogSection = () => {
                   Read More
                 </button>
               </div>
-            </motion.div>
+            </div>
 
             <div className="bg-white shadow-lg rounded-lg overflow-hidden">
               <img

@@ -18,7 +18,7 @@ const Banner = () => {
     className="relative"
   >
     <div className="sm:relative">
-      <img src={volleyball} alt="Volleyball" />
+      <img src={volleyball} alt="Volleyball" className="w-full"/>
       <div className="absolute bottom-5 text-white bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] p-4 sm:p-8">
         <h2 className="text-2xl sm:text-3xl font-bold mb-4">
           Experience the thrill of volleyball
