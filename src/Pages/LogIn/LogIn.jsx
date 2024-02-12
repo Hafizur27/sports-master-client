@@ -78,6 +78,16 @@ const LogIn = () => {
                 {errors.password && (
                   <span className="text-red-500">Password is required</span>
                 )}
+                <a
+                  className="absolute top-[84px] right-3"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? (
+                    <BsEyeSlashFill></BsEyeSlashFill>
+                  ) : (
+                    <BsEyeFill></BsEyeFill>
+                  )}
+                </a>
               </div>
               <div className="form-control mt-6">
                 <input
@@ -87,16 +97,6 @@ const LogIn = () => {
                 />
               </div>
             </form>
-            <a
-              className="absolute bottom-20 left-96 ml-44 "
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? (
-                <BsEyeSlashFill></BsEyeSlashFill>
-              ) : (
-                <BsEyeFill></BsEyeFill>
-              )}
-            </a>
 
             <p>
               <small className="text-orange-600 ml-6 text-sm">
